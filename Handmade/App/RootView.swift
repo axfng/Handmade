@@ -11,6 +11,7 @@ import FirebaseAuth
 struct RootView: View {
     @State private var loadScreen = true
     @State private var isSignedIn: Bool
+    @State private var userID: String
     
     @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var productViewModel: ProductViewModel
@@ -20,6 +21,11 @@ struct RootView: View {
     
     init() {
         _isSignedIn = State(initialValue: Auth.auth().currentUser != nil)
+        if let uid = Auth.auth().currentUser?.uid {
+            userID = uid
+        } else {
+            userID = ""
+        }
     }
  
     var body: some View {
@@ -29,7 +35,7 @@ struct RootView: View {
                     .transition(.opacity)
             } else {
                 if isSignedIn {
-                    MainTabView(isSignedIn: $isSignedIn)
+                    MainTabView(isSignedIn: $isSignedIn, userId: $userID)
                         .environmentObject(viewModel)
                         .environmentObject(productViewModel)
                         .environmentObject(cartViewModel)
@@ -45,11 +51,13 @@ struct RootView: View {
                     loadScreen.toggle()
                 }
             }
+            
         }
     }
 }
 
 #Preview {
+
     RootView()
         .environmentObject(AuthViewModel())
         .environmentObject(ProductViewModel())

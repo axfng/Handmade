@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @Binding var isSignedIn: Bool
+    @Binding var userId: String
     
     @StateObject private var viewModel = AuthViewModel()
     @StateObject private var productViewModel = ProductViewModel()
@@ -18,6 +19,7 @@ struct MainTabView: View {
 
 
     var body: some View {
+        
         TabView {
             
             HomeView(isSignedIn: $isSignedIn)
@@ -40,7 +42,7 @@ struct MainTabView: View {
                 .environmentObject(savedViewModel)
                 .environmentObject(userSession)
 
-            SavedView()
+            SavedView(userId: $userId)
                 .tabItem {
                     Label("Saved", systemImage: "heart")
                 }
@@ -50,7 +52,7 @@ struct MainTabView: View {
                 .environmentObject(savedViewModel)
                 .environmentObject(userSession)
 
-            CartView()
+            CartView(userId: $userId)
                 .tabItem {
                     Label("Cart", systemImage: "cart")
                 }
@@ -61,9 +63,14 @@ struct MainTabView: View {
                 .environmentObject(userSession)
         
         }
+        .onAppear {
+            savedViewModel.fetchSavedProductIDs(userId: userId)
+            cartViewModel.fetchCartItemIDs(userId: userId)
+        }
     }
+    
 }
 
 #Preview {
-    MainTabView(isSignedIn: .constant(true))
+    MainTabView(isSignedIn: .constant(true), userId: .constant("UAOrPcizD3VHqaepr9E3CGHr4Aq2"))
 }

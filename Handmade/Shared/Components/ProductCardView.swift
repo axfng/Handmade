@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductCardView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var savedViewModel: SavedViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
     @EnvironmentObject var userSession: UserSessionViewModel
@@ -43,16 +44,12 @@ struct ProductCardView: View {
                 HStack {
                     Button{
 //                        let cartItem = CartItem(id: product.id, product: product, quantity: 1)
-                        cartViewModel.addToCart(product: product)
+                        cartViewModel.addToCart(product: product, authViewModel: viewModel)
                     } label: {
                         Text("Add to Cart")
                     }
                     Button{
-//                        savedViewModel.toggleLike(for: product)
-//                        if !userSession.savedList.contains(where: { $0.id == product.id }) {
-//                            userSession.savedList.append(product)
-//                        }
-                        savedViewModel.toggleLike(for: product)
+                        savedViewModel.toggleLike(for: product, authViewModel: viewModel)
                     } label: {
                         Image(systemName: savedViewModel.isLiked(product) ? "heart.fill" : "heart")
                             .foregroundColor(.red)
@@ -61,7 +58,6 @@ struct ProductCardView: View {
                 .padding(.vertical, 10)
             }
             .frame(alignment: .leading)
-            
             Spacer()
         }
     }
@@ -69,5 +65,6 @@ struct ProductCardView: View {
 
 #Preview {
     ProductCardView(product: Product(id: 1, title: "Sample Product", description: "A great product", price: 19.99, thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png", tags: ["Beauty"]))
+        .environmentObject(AuthViewModel())
         .environmentObject(SavedViewModel())
 }

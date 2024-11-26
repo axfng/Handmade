@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartProductView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var savedViewModel: SavedViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
 
@@ -46,17 +47,10 @@ struct CartProductView: View {
 
                 HStack {
                     Button(role: .destructive) {
-                        cartViewModel.removeFromCart(id: cartItem.id)
+                        cartViewModel.removeFromCart(cartItem: cartItem, authViewModel: viewModel)
                     } label: {
                         Label("Remove", systemImage: "trash")
                     }
-                    
-//                    Button(action: {
-//                        savedViewModel.toggleLike(for: cartItem.product)
-//                    }) {
-//                        Image(systemName: savedViewModel.isLiked(cartItem.product) ? "heart.fill" : "heart")
-//                            .foregroundColor(.red)
-//                    }
                 }
                 .padding(.top, 6)
             }
@@ -69,5 +63,6 @@ struct CartProductView: View {
 #Preview {
     return CartProductView(cartItem: CartItem(id: 1, title: "Mascara", thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png", price: 19.99, quantity: 2))
         .environmentObject(SavedViewModel())
+        .environmentObject(AuthViewModel())
         .environmentObject(CartViewModel())
 }

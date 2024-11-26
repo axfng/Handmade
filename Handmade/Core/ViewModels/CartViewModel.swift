@@ -5,23 +5,77 @@
 //  Created by alfeng on 11/2/24.
 //
 
+import FirebaseFirestore
+import FirebaseAuth
 import Foundation
+import SwiftUI
 
 @MainActor
 class CartViewModel: ObservableObject {
     @Published var cartItems: [CartItem] = []
-    @Published var clientSecret: String?
+    private let productService: ProductService
     
-    func addToCart(product: Product) {
-        if let index = cartItems.firstIndex(where: { $0.id == product.id }) {
-            cartItems[index].quantity += 1
-        } else {
-            cartItems.append(CartItem(id: product.id, title: product.title, thumbnail: product.thumbnail, price: product.price, quantity: 1))
+    init(productService: ProductService = ProductService()) {
+        self.productService = productService
+    }
+    
+    func fetchCartItemIDs(userId: String) {
+        let userRef = Firestore.firestore().collection("users").document(userId)
+        userRef.getDocument { [weak self] (document, error) in
+            if let error = error {
+                print("Error fetching user document: \(error.localizedDescription)")
+                return
+            }
+            guard let document = document, document.exists, let data = document.data(),
+                  let cartItemIds = data["cartItems"] as? [Int] else {
+                print("Document does not exist or data is malformed.")
+                return
+            }
+            print("Fetched cart item IDs: \(cartItemIds)")
+            self?.fetchProducts(for: cartItemIds)
         }
     }
     
-    func removeFromCart(id: Int) {
-        cartItems.removeAll { $0.id == id }
+    private func fetchProducts(for ids: [Int]) {
+        var cart: [Product] = []
+        Task {
+            do {
+                let allProducts = try await productService.getProducts()
+                DispatchQueue.main.async {
+                    cart = allProducts.filter { ids.contains($0.id) }
+                    for item in cart {
+                        self.cartItems.append(CartItem(id: item.id, title: item.title, thumbnail: item.thumbnail, price: item.price, quantity: 1))
+                    }
+                }
+            } catch {
+                print("Error fetching products: \(error)")
+            }
+        }
+    }
+    
+    func addToCart(product: Product, authViewModel: AuthViewModel) {
+        if let index = cartItems.firstIndex(where: { $0.id == product.id }) {
+            cartItems[index].quantity += 1
+            updateCartItemsInFirestore(authViewModel: authViewModel)
+        } else {
+            cartItems.append(CartItem(id: product.id, title: product.title, thumbnail: product.thumbnail, price: product.price, quantity: 1))
+            updateCartItemsInFirestore(authViewModel: authViewModel)
+        }
+    }
+
+    private func updateCartItemsInFirestore(authViewModel: AuthViewModel) {
+        let cartItemIds = cartItems.map { $0.id }
+        Task {
+            await authViewModel.updateCartItems(with: cartItemIds)
+        }
+    }
+    
+    func removeFromCart(cartItem: CartItem, authViewModel: AuthViewModel) {
+        if let index = cartItems.firstIndex(where: { $0.id == cartItem.id }) {
+            cartItems.remove(at: index)
+            updateCartItemsInFirestore(authViewModel: authViewModel)
+        }
+        cartItems.removeAll { $0.id == cartItem.id }
     }
     
     func clearCart() {
@@ -34,15 +88,6 @@ class CartViewModel: ObservableObject {
     
     var totalItems: Int {
         cartItems.reduce(0) { $0 + $1.quantity }
-    }
-    
-    func startCheckout() async {
-        let totalAmount = calculateTotalAmount()
-        do {
-            self.clientSecret = try await StripeService.shared.createPaymentIntent(amount: totalAmount)
-        } catch {
-            print("Error creating payment intent: \(error)")
-        }
     }
     
     private func calculateTotalAmount() -> Int {

@@ -65,4 +65,31 @@ class AuthViewModel: ObservableObject {
         
 //        print("DEBUG: Current user is \(self.currentUser)")
     }
+    
+    func updateLikedItems(with likedItemIds: [Int]) async {
+        self.currentUser?.likedItems = likedItemIds
+        guard let uid = self.userSession?.uid else { return }
+
+        let userData = ["likedItems": likedItemIds]
+        do {
+            try await Firestore.firestore().collection("users").document(uid).updateData(userData)
+            print("Successfully updated liked items")
+        } catch let error {
+            print("Error updating liked items: \(error)")
+        }
+    }
+
+    func updateCartItems(with cartItemIds: [Int]) async {
+        self.currentUser?.cartItems = cartItemIds
+        guard let uid = self.userSession?.uid, let cartItems = self.currentUser?.cartItems else { return }
+        
+        let userData = ["cartItems": cartItems]
+        
+        do {
+            try await Firestore.firestore().collection("users").document(uid).updateData(userData)
+            print("Successfully updated cart items")
+        } catch let error {
+            print("Error updating cart items: \(error)")
+        }
+    }
 }

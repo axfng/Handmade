@@ -18,7 +18,6 @@ class ProductService {
     }
 }
 
-// A struct to match the JSON structure returned by the API
 struct ProductResponse: Codable {
     let products: [Product]
 }

@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct CartView: View {
+    @Binding var userId: String
+    
     @EnvironmentObject private var viewModel: AuthViewModel
     @EnvironmentObject var productViewModel: ProductViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
     @EnvironmentObject var savedViewModel: SavedViewModel
     @EnvironmentObject var userSession: UserSessionViewModel
-
-//    let user: User? = viewModel.currentUser
-
 
     var body: some View {
         VStack {
@@ -25,12 +24,6 @@ struct CartView: View {
                     .foregroundStyle(.blue)
                     .padding()
             }
-//
-//            if userSession.cart.isEmpty {
-//                Text("Your shopping cart is empty!")
-//                    .foregroundStyle(.gray)
-//                    .padding()
-//            } else {
                 ScrollView {
                     ForEach (cartViewModel.cartItems) { item in
                         CartProductView(cartItem: item)
@@ -53,8 +46,6 @@ struct CartView: View {
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
-//                }
-//                .padding()
             }
 
             Spacer()
@@ -64,7 +55,7 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView()
+    CartView(userId: .constant("jhskS1cGXWQTCX7ioLw3XGrvfjI3"))
         .environmentObject(AuthViewModel())
         .environmentObject(ProductViewModel())
         .environmentObject(CartViewModel())
