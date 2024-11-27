@@ -1,10 +1,3 @@
-//
-//  SavedViews.swift
-//  Handmaden
-//
-//  Created by alfeng on 11/2/24.
-//
-
 import SwiftUI
 
 struct SavedView: View {
@@ -14,7 +7,6 @@ struct SavedView: View {
     @EnvironmentObject var productViewModel: ProductViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
     @EnvironmentObject var savedViewModel: SavedViewModel
-    @EnvironmentObject var userSession: UserSessionViewModel
 
     var body: some View {
         VStack {
@@ -55,5 +47,4 @@ struct SavedView: View {
         .environmentObject(ProductViewModel())
         .environmentObject(CartViewModel())
         .environmentObject(SavedViewModel())
-        .environmentObject(UserSessionViewModel())
 }

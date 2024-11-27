@@ -1,20 +1,13 @@
-//
-//  CartView.swift
-//  Handmaden
-//
-//  Created by alfeng on 11/2/24.
-//
-
 import SwiftUI
 
 struct CartView: View {
     @Binding var userId: String
+    @State private var showCheckoutView = false
     
     @EnvironmentObject private var viewModel: AuthViewModel
     @EnvironmentObject var productViewModel: ProductViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
     @EnvironmentObject var savedViewModel: SavedViewModel
-    @EnvironmentObject var userSession: UserSessionViewModel
 
     var body: some View {
         VStack {
@@ -36,7 +29,7 @@ struct CartView: View {
                         .padding(.top)
 
                     Button {
-                        // todo
+                        showCheckoutView.toggle()
                     } label: {
                         Text("Proceed to Checkout")
                             .frame(maxWidth: .infinity)
@@ -51,6 +44,9 @@ struct CartView: View {
             Spacer()
         }
         .navigationTitle("Cart")
+        .popover(isPresented: $showCheckoutView) {
+            CheckoutView()
+        }
     }
 }
 
@@ -60,5 +56,4 @@ struct CartView: View {
         .environmentObject(ProductViewModel())
         .environmentObject(CartViewModel())
         .environmentObject(SavedViewModel())
-        .environmentObject(UserSessionViewModel())
 }

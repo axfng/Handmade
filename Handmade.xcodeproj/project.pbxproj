@@ -31,12 +31,10 @@
 		AB2A729D2CDDC3DC0027C64A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72872CDDC3DB0027C64A /* User.swift */; };
 		AB2A729E2CDDC3DC0027C64A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72892CDDC3DB0027C64A /* APIManager.swift */; };
 		AB2A729F2CDDC3DC0027C64A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A728A2CDDC3DB0027C64A /* NetworkError.swift */; };
-		AB2A72A22CDDC3DC0027C64A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A728E2CDDC3DB0027C64A /* AuthService.swift */; };
 		AB2A72A32CDDC3DC0027C64A /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A728F2CDDC3DB0027C64A /* ProductService.swift */; };
 		AB2A72A42CDDC3DC0027C64A /* StripeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72902CDDC3DB0027C64A /* StripeService.swift */; };
 		AB2A72A52CDDC3DC0027C64A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72922CDDC3DB0027C64A /* CartViewModel.swift */; };
 		AB2A72A62CDDC3DC0027C64A /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72932CDDC3DB0027C64A /* ProductViewModel.swift */; };
-		AB2A72A72CDDC3DC0027C64A /* UserSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72942CDDC3DB0027C64A /* UserSessionViewModel.swift */; };
 		AB2A72A92CDDC3DC0027C64A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72972CDDC3DC0027C64A /* Helpers.swift */; };
 		AB2A72C42CDDC4070027C64A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72AA2CDDC4060027C64A /* HomeView.swift */; };
 		AB2A72C52CDDC4070027C64A /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72AD2CDDC4060027C64A /* CartView.swift */; };
@@ -92,12 +90,10 @@
 		AB2A72872CDDC3DB0027C64A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB2A72892CDDC3DB0027C64A /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		AB2A728A2CDDC3DB0027C64A /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		AB2A728E2CDDC3DB0027C64A /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AB2A728F2CDDC3DB0027C64A /* ProductService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		AB2A72902CDDC3DB0027C64A /* StripeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeService.swift; sourceTree = "<group>"; };
 		AB2A72922CDDC3DB0027C64A /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		AB2A72932CDDC3DB0027C64A /* ProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
-		AB2A72942CDDC3DB0027C64A /* UserSessionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionViewModel.swift; sourceTree = "<group>"; };
 		AB2A72972CDDC3DC0027C64A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		AB2A72AA2CDDC4060027C64A /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB2A72AD2CDDC4060027C64A /* CartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -277,7 +273,6 @@
 		AB2A72912CDDC3DB0027C64A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A728E2CDDC3DB0027C64A /* AuthService.swift */,
 				AB2A728F2CDDC3DB0027C64A /* ProductService.swift */,
 				AB2A72902CDDC3DB0027C64A /* StripeService.swift */,
 			);
@@ -287,9 +282,7 @@
 		AB2A72952CDDC3DB0027C64A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A72922CDDC3DB0027C64A /* CartViewModel.swift */,
 				AB2A72932CDDC3DB0027C64A /* ProductViewModel.swift */,
-				AB2A72942CDDC3DB0027C64A /* UserSessionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -318,19 +311,12 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		AB2A72AF2CDDC4060027C64A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72AD2CDDC4060027C64A /* CartView.swift */,
-				AB2A72AE2CDDC4060027C64A /* CheckoutView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		AB2A72B02CDDC4060027C64A /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A72AF2CDDC4060027C64A /* Views */,
+				AB2A72922CDDC3DB0027C64A /* CartViewModel.swift */,
+				AB2A72AD2CDDC4060027C64A /* CartView.swift */,
+				AB2A72AE2CDDC4060027C64A /* CheckoutView.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -601,7 +587,6 @@
 				AB2A72D62CDDC4110027C64A /* ProductCardView.swift in Sources */,
 				AB2A72C62CDDC4070027C64A /* CheckoutView.swift in Sources */,
 				AB2A729C2CDDC3DC0027C64A /* Product.swift in Sources */,
-				AB2A72A72CDDC3DC0027C64A /* UserSessionViewModel.swift in Sources */,
 				AB2A729E2CDDC3DC0027C64A /* APIManager.swift in Sources */,
 				AB2A72C92CDDC4070027C64A /* SavedView.swift in Sources */,
 				AB2A72D92CDDC5880027C64A /* CartProductView.swift in Sources */,
@@ -621,7 +606,6 @@
 				AB2A72CA2CDDC4070027C64A /* SearchViewModel.swift in Sources */,
 				AB2A729B2CDDC3DC0027C64A /* Order.swift in Sources */,
 				AB2A72CD2CDDC4080027C64A /* LoginView.swift in Sources */,
-				AB2A72A22CDDC3DC0027C64A /* AuthService.swift in Sources */,
 				AB2A72C52CDDC4070027C64A /* CartView.swift in Sources */,
 				AB2A72CE2CDDC4080027C64A /* SignUpView.swift in Sources */,
 				AB2A72C72CDDC4070027C64A /* ProfileView.swift in Sources */,

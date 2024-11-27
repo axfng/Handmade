@@ -1,17 +1,9 @@
-//
-//  ProductCardView.swift
-//  Handmaden
-//
-//  Created by alfeng on 11/2/24.
-//
-
 import SwiftUI
 
 struct ProductCardView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var savedViewModel: SavedViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
-    @EnvironmentObject var userSession: UserSessionViewModel
 
     let product: Product
 

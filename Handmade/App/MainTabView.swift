@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Handmaden
-//
-//  Created by alfeng on 11/2/24.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
@@ -15,7 +8,6 @@ struct MainTabView: View {
     @StateObject private var productViewModel = ProductViewModel()
     @StateObject private var cartViewModel = CartViewModel()
     @StateObject private var savedViewModel = SavedViewModel() 
-    @StateObject private var userSession = UserSessionViewModel()
 
 
     var body: some View {
@@ -30,7 +22,6 @@ struct MainTabView: View {
                 .environmentObject(productViewModel)
                 .environmentObject(cartViewModel)
                 .environmentObject(savedViewModel)
-                .environmentObject(userSession)
 
             SearchView(productViewModel: ProductViewModel())
                 .tabItem {
@@ -40,7 +31,6 @@ struct MainTabView: View {
                 .environmentObject(productViewModel)
                 .environmentObject(cartViewModel)
                 .environmentObject(savedViewModel)
-                .environmentObject(userSession)
 
             SavedView(userId: $userId)
                 .tabItem {
@@ -50,7 +40,6 @@ struct MainTabView: View {
                 .environmentObject(productViewModel)
                 .environmentObject(cartViewModel)
                 .environmentObject(savedViewModel)
-                .environmentObject(userSession)
 
             CartView(userId: $userId)
                 .tabItem {
@@ -60,7 +49,6 @@ struct MainTabView: View {
                 .environmentObject(productViewModel)
                 .environmentObject(cartViewModel)
                 .environmentObject(savedViewModel)
-                .environmentObject(userSession)
         
         }
         .onAppear {

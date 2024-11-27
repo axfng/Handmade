@@ -1,16 +1,8 @@
-//
-//  StripeService.swift
-//  Handmaden
-//
-//  Created by alfeng on 11/2/24.
-//
-
 import Foundation
 
 class StripeService {
     static let shared = StripeService()
     
-    // Endpoint for creating payment intent
     let baseURL = "https://glitch.com/edit/#!/flicker-chocolate-polish?path=server.js%3A7%3A0"
 
     func createPaymentIntent(amount: Int, currency: String = "usd") async throws -> String {
@@ -35,7 +27,6 @@ class StripeService {
     }
 }
 
-// Define a struct for the payment response
 struct PaymentIntentResponse: Codable {
     let clientSecret: String
 }

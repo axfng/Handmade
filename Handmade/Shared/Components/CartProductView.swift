@@ -1,10 +1,3 @@
-//
-//  CartProductView.swift
-//  Handmaden
-//
-//  Created by alfeng on 11/3/24.
-//
-
 import SwiftUI
 
 struct CartProductView: View {

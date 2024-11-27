@@ -1,13 +1,19 @@
-////
-////  CheckoutView.swift
-////  Handmaden
-////
-////  Created by alfeng on 11/2/24.
-////
 //
-//import SwiftUI
-//import UIKit
-//import Stripe
+//  CheckoutView.swift
+//  Handmaden
+//
+//  Created by alfeng on 11/2/24.
+//
+
+import SwiftUI
+import UIKit
+
+struct CheckoutView: View {
+    var body: some View {
+        Text("Hello world")
+    }
+}
+////import Stripe
 //
 //class CheckoutCoordinator: NSObject, STPAuthenticationContext {
 //    // Provide the required UIViewController for Stripe authentication
