@@ -29,8 +29,6 @@
 		AB2A729B2CDDC3DC0027C64A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72852CDDC3DB0027C64A /* Order.swift */; };
 		AB2A729C2CDDC3DC0027C64A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72862CDDC3DB0027C64A /* Product.swift */; };
 		AB2A729D2CDDC3DC0027C64A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72872CDDC3DB0027C64A /* User.swift */; };
-		AB2A729E2CDDC3DC0027C64A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72892CDDC3DB0027C64A /* APIManager.swift */; };
-		AB2A729F2CDDC3DC0027C64A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A728A2CDDC3DB0027C64A /* NetworkError.swift */; };
 		AB2A72A32CDDC3DC0027C64A /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A728F2CDDC3DB0027C64A /* ProductService.swift */; };
 		AB2A72A42CDDC3DC0027C64A /* StripeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72902CDDC3DB0027C64A /* StripeService.swift */; };
 		AB2A72A52CDDC3DC0027C64A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72922CDDC3DB0027C64A /* CartViewModel.swift */; };
@@ -88,8 +86,6 @@
 		AB2A72852CDDC3DB0027C64A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		AB2A72862CDDC3DB0027C64A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		AB2A72872CDDC3DB0027C64A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		AB2A72892CDDC3DB0027C64A /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		AB2A728A2CDDC3DB0027C64A /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AB2A728F2CDDC3DB0027C64A /* ProductService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		AB2A72902CDDC3DB0027C64A /* StripeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeService.swift; sourceTree = "<group>"; };
 		AB2A72922CDDC3DB0027C64A /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -229,10 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				AB2A72882CDDC3DB0027C64A /* Models */,
-				AB2A728B2CDDC3DB0027C64A /* Networking */,
+				AB2A72952CDDC3DB0027C64A /* ViewModels */,
 				AB2A72912CDDC3DB0027C64A /* Services */,
 				AB2A72982CDDC3DC0027C64A /* Utilities */,
-				AB2A72952CDDC3DB0027C64A /* ViewModels */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -261,15 +256,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		AB2A728B2CDDC3DB0027C64A /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72892CDDC3DB0027C64A /* APIManager.swift */,
-				AB2A728A2CDDC3DB0027C64A /* NetworkError.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		AB2A72912CDDC3DB0027C64A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,18 +281,10 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		AB2A72AB2CDDC4060027C64A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72AA2CDDC4060027C64A /* HomeView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		AB2A72AC2CDDC4060027C64A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A72AB2CDDC4060027C64A /* Views */,
+				AB2A72AA2CDDC4060027C64A /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -321,94 +299,38 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
-		AB2A72B22CDDC4060027C64A /* Views */ = {
+		AB2A72B32CDDC4060027C64A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				AB2A72B12CDDC4060027C64A /* ProfileView.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AB2A72B32CDDC4060027C64A /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72B22CDDC4060027C64A /* Views */,
-			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		AB2A72B52CDDC4070027C64A /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72B42CDDC4070027C64A /* SavedViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		AB2A72B72CDDC4070027C64A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72B62CDDC4070027C64A /* SavedView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		AB2A72B82CDDC4070027C64A /* Saved */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A72B52CDDC4070027C64A /* ViewModels */,
-				AB2A72B72CDDC4070027C64A /* Views */,
+				AB2A72B42CDDC4070027C64A /* SavedViewModel.swift */,
+				AB2A72B62CDDC4070027C64A /* SavedView.swift */,
 			);
 			path = Saved;
-			sourceTree = "<group>";
-		};
-		AB2A72BA2CDDC4070027C64A /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72B92CDDC4070027C64A /* SearchViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		AB2A72BC2CDDC4070027C64A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72BB2CDDC4070027C64A /* SearchView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		AB2A72BD2CDDC4070027C64A /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A72BA2CDDC4070027C64A /* ViewModels */,
-				AB2A72BC2CDDC4070027C64A /* Views */,
+				AB2A72B92CDDC4070027C64A /* SearchViewModel.swift */,
+				AB2A72BB2CDDC4070027C64A /* SearchView.swift */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		AB2A72BF2CDDC4070027C64A /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72BE2CDDC4070027C64A /* AuthViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		AB2A72C22CDDC4070027C64A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB2A72C02CDDC4070027C64A /* LoginView.swift */,
-				AB2A72C12CDDC4070027C64A /* SignUpView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		AB2A72C32CDDC4070027C64A /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				AB2A72BF2CDDC4070027C64A /* ViewModels */,
-				AB2A72C22CDDC4070027C64A /* Views */,
+				AB2A72BE2CDDC4070027C64A /* AuthViewModel.swift */,
+				AB2A72C02CDDC4070027C64A /* LoginView.swift */,
+				AB2A72C12CDDC4070027C64A /* SignUpView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -587,7 +509,6 @@
 				AB2A72D62CDDC4110027C64A /* ProductCardView.swift in Sources */,
 				AB2A72C62CDDC4070027C64A /* CheckoutView.swift in Sources */,
 				AB2A729C2CDDC3DC0027C64A /* Product.swift in Sources */,
-				AB2A729E2CDDC3DC0027C64A /* APIManager.swift in Sources */,
 				AB2A72C92CDDC4070027C64A /* SavedView.swift in Sources */,
 				AB2A72D92CDDC5880027C64A /* CartProductView.swift in Sources */,
 				AB2A727F2CDDC3530027C64A /* RootView.swift in Sources */,
@@ -599,7 +520,6 @@
 				AB2A729D2CDDC3DC0027C64A /* User.swift in Sources */,
 				AB2A729A2CDDC3DC0027C64A /* CartItem.swift in Sources */,
 				AB2A72CB2CDDC4070027C64A /* SearchView.swift in Sources */,
-				AB2A729F2CDDC3DC0027C64A /* NetworkError.swift in Sources */,
 				AB2A72A62CDDC3DC0027C64A /* ProductViewModel.swift in Sources */,
 				AB2A72D72CDDC4110027C64A /* SettingsRowView.swift in Sources */,
 				AB2A72C82CDDC4070027C64A /* SavedViewModel.swift in Sources */,
