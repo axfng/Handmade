@@ -49,6 +49,8 @@
 		AB2A72D62CDDC4110027C64A /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72D12CDDC4110027C64A /* ProductCardView.swift */; };
 		AB2A72D72CDDC4110027C64A /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72D22CDDC4110027C64A /* SettingsRowView.swift */; };
 		AB2A72D92CDDC5880027C64A /* CartProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A72D82CDDC5880027C64A /* CartProductView.swift */; };
+		AB5B44A72CF9884800BD9FA0 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B44A62CF9884800BD9FA0 /* ProductView.swift */; };
+		AB5B44A92CFA9C7700BD9FA0 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B44A82CFA9C7700BD9FA0 /* ReviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		AB2A72D12CDDC4110027C64A /* ProductCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		AB2A72D22CDDC4110027C64A /* SettingsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		AB2A72D82CDDC5880027C64A /* CartProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartProductView.swift; sourceTree = "<group>"; };
+		AB5B44A62CF9884800BD9FA0 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		AB5B44A82CFA9C7700BD9FA0 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,7 +345,9 @@
 				AB2A72D82CDDC5880027C64A /* CartProductView.swift */,
 				AB2A72D02CDDC4110027C64A /* InputView.swift */,
 				AB2A72D12CDDC4110027C64A /* ProductCardView.swift */,
+				AB5B44A62CF9884800BD9FA0 /* ProductView.swift */,
 				AB2A72D22CDDC4110027C64A /* SettingsRowView.swift */,
+				AB5B44A82CFA9C7700BD9FA0 /* ReviewView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2A723B2CDDBFCE0027C64A /* HandmadeApp.swift in Sources */,
+				AB5B44A72CF9884800BD9FA0 /* ProductView.swift in Sources */,
 				AB2A72A92CDDC3DC0027C64A /* Helpers.swift in Sources */,
 				AB2A72D62CDDC4110027C64A /* ProductCardView.swift in Sources */,
 				AB2A72C62CDDC4070027C64A /* CheckoutView.swift in Sources */,
@@ -513,6 +520,7 @@
 				AB2A72D92CDDC5880027C64A /* CartProductView.swift in Sources */,
 				AB2A727F2CDDC3530027C64A /* RootView.swift in Sources */,
 				AB2A72812CDDC3530027C64A /* MainTabView.swift in Sources */,
+				AB5B44A92CFA9C7700BD9FA0 /* ReviewView.swift in Sources */,
 				AB2A72A52CDDC3DC0027C64A /* CartViewModel.swift in Sources */,
 				AB2A72A42CDDC3DC0027C64A /* StripeService.swift in Sources */,
 				AB2A72C42CDDC4070027C64A /* HomeView.swift in Sources */,

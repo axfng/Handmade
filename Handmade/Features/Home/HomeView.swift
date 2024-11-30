@@ -18,6 +18,7 @@ struct HomeView: View {
                     Image(systemName: "person.circle")
                 }
             }
+        
             HStack {
                 Text("Handmade by Heels")
                     .font(.title)
