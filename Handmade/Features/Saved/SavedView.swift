@@ -9,35 +9,33 @@ struct SavedView: View {
     @EnvironmentObject var savedViewModel: SavedViewModel
 
     var body: some View {
-        VStack {
-            Text("Saved Items")
-                .font(.title.bold())
-                .foregroundStyle(.blue)
-                .padding()
-
-            if savedViewModel.savedItems.isEmpty {
-                Text("Your saved list is empty.")
-                    .foregroundStyle(.gray)
-                    .padding()
-            } else {
-                ScrollView {
-                    ForEach(savedViewModel.savedItems) { product in
-                        ProductCardView(product: product)
-                            .swipeActions {
-                                Button(role: .destructive) {
-                                    savedViewModel.toggleLike(for: product, authViewModel: viewModel)
-                                } label: {
-                                    Label("Remove", systemImage: "trash")
+            VStack {
+                Text("Saved Items")
+                    .font(.title.bold())
+                
+                if savedViewModel.savedItems.isEmpty {
+                    Text("Your saved list is empty.")
+                        .foregroundStyle(.gray)
+                        .padding(10)
+                } else {
+                    ScrollView {
+                        ForEach(savedViewModel.savedItems) { product in
+                            ProductCardView(product: product)
+                                .swipeActions {
+                                    Button(role: .destructive) {
+                                        savedViewModel.toggleLike(for: product, authViewModel: viewModel)
+                                    } label: {
+                                        Label("Remove", systemImage: "trash")
+                                    }
                                 }
-                            }
+                                .padding(.horizontal, 15)
+                        }
                     }
+                    .listStyle(InsetGroupedListStyle())
                 }
-                .listStyle(InsetGroupedListStyle())
+                
+                Spacer()
             }
-            
-            Spacer()
-        }
-        .navigationTitle("Saved")
     }
 }
 

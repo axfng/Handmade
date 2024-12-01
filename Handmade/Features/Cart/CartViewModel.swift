@@ -37,7 +37,7 @@ class CartViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     cart = allProducts.filter { ids.contains($0.id) }
                     for item in cart {
-                        self.cartItems.append(CartItem(id: item.id, title: item.title, thumbnail: item.thumbnail, price: item.price, quantity: 1))
+                        self.cartItems.append(CartItem(id: item.id, title: item.title, thumbnail: item.images[0], price: item.price, quantity: 1))
                     }
                 }
             } catch {
@@ -51,7 +51,7 @@ class CartViewModel: ObservableObject {
             cartItems[index].quantity += 1
             updateCartItemsInFirestore(authViewModel: authViewModel)
         } else {
-            cartItems.append(CartItem(id: product.id, title: product.title, thumbnail: product.thumbnail, price: product.price, quantity: 1))
+            cartItems.append(CartItem(id: product.id, title: product.title, thumbnail: product.images[0], price: product.price, quantity: 1))
             updateCartItemsInFirestore(authViewModel: authViewModel)
         }
     }

@@ -14,14 +14,13 @@ struct CartView: View {
             HStack {
                 Text("Shopping Cart")
                     .font(.title.bold())
-                    .foregroundStyle(.blue)
-                    .padding()
             }
                 ScrollView {
                     ForEach (cartViewModel.cartItems) { item in
                         CartProductView(cartItem: item)
                     }
                     .listStyle(InsetGroupedListStyle())
+                    .padding(.horizontal, 15)
                 }
                 VStack {
                     Text("Total: \(cartViewModel.totalCost, specifier: "%.2f")")
@@ -34,7 +33,7 @@ struct CartView: View {
                         Text("Proceed to Checkout")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.blue)
+                            .background(Color(red: 75/255, green: 156/255, blue: 211/255))
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }

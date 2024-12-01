@@ -20,32 +20,34 @@ struct CartProductView: View {
                     ProgressView()
                 }
             }
-            .frame(width: 100, height: 100)
-            .cornerRadius(10)
-            .padding(.trailing, 8)
+            .frame(width: 85, height: 85)
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(cartItem.title)
-                    .font(.headline)
+                    .font(.headline).bold()
                     .lineLimit(1)
-                Text("\(cartItem.price, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Text("Quantity: \(cartItem.quantity)")
-                    .font(.subheadline)
-                Text("Total: \(cartItem.totalPrice, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .padding(.top, 4)
-
                 HStack {
-                    Button(role: .destructive) {
-                        cartViewModel.removeFromCart(cartItem: cartItem, authViewModel: viewModel)
-                    } label: {
-                        Label("Remove", systemImage: "trash")
-                    }
+                    Text("Price: \(cartItem.price, format: .currency(code: Locale.current.currency?.identifier ?? "USD")),")
+                        .font(.subheadline)
+                    Text("Quantity: \(cartItem.quantity)")
+                        .font(.subheadline)
                 }
-                .padding(.top, 6)
+                .foregroundColor(.secondary)
+                .padding(.vertical, 3)
+                
+                HStack {
+                    Text("Total: \(cartItem.totalPrice, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))")
+                        .font(.headline)
+                    Spacer()
+                    HStack {
+                        Button(role: .destructive) {
+                            cartViewModel.removeFromCart(cartItem: cartItem, authViewModel: viewModel)
+                        } label: {
+                            Label("Remove", systemImage: "trash")
+                        }
+                    }
+                    Spacer()
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -54,7 +56,7 @@ struct CartProductView: View {
 }
 
 #Preview {
-    return CartProductView(cartItem: CartItem(id: 1, title: "Mascara", thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png", price: 19.99, quantity: 2))
+    return CartProductView(cartItem: CartItem(id: 1, title: "Essence Mascara Lash Princess", thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png", price: 19.99, quantity: 2))
         .environmentObject(SavedViewModel())
         .environmentObject(AuthViewModel())
         .environmentObject(CartViewModel())

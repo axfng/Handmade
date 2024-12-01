@@ -12,23 +12,24 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             HStack {
+                Text("Handmade by Heels")
+                    .font(.title).bold()
                 NavigationLink {
                     ProfileView(isSignedIn: $isSignedIn)
                 } label: {
                     Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 22, height: 22)
+                        .foregroundStyle(Color(red: 75/255, green: 156/255, blue: 211/255))
                 }
-            }
-        
-            HStack {
-                Text("Handmade by Heels")
-                    .font(.title)
-                    .padding(.bottom, 20)
             }
             ScrollView {
                 ForEach(productViewModel.products, id: \.id) { product in
                     ProductCardView(product: product)
                 }
+                .padding(.horizontal, 15)
             }
+            Spacer()
         }
         .onAppear {
             Task {

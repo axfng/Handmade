@@ -13,7 +13,6 @@ struct MainTabView: View {
     var body: some View {
         
         TabView {
-            
             HomeView(isSignedIn: $isSignedIn)
                 .tabItem {
                     Label("Home", systemImage: "house")
@@ -23,7 +22,7 @@ struct MainTabView: View {
                 .environmentObject(cartViewModel)
                 .environmentObject(savedViewModel)
 
-            SearchView(productViewModel: ProductViewModel())
+            SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
@@ -51,6 +50,7 @@ struct MainTabView: View {
                 .environmentObject(savedViewModel)
         
         }
+        .tint(Color(red: 75/255, green: 156/255, blue: 211/255))
         .onAppear {
             savedViewModel.fetchSavedProductIDs(userId: userId)
             cartViewModel.fetchCartItemIDs(userId: userId)

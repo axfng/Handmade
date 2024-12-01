@@ -31,7 +31,7 @@ struct Product: Identifiable, Codable {
     let description: String
     let price: Double
     let rating: Double
-    let thumbnail: String
+    let images: [String]
     let tags: [String]
     let reviews: [Review]
     
@@ -45,6 +45,6 @@ struct Product: Identifiable, Codable {
     var isLiked: Bool = false
     
     enum CodingKeys: String, CodingKey {
-        case id, title, description, price, rating, thumbnail, reviews, tags
+        case id, title, description, price, rating, images, reviews, tags
     }
 }

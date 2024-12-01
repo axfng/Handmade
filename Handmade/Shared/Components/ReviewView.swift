@@ -41,7 +41,7 @@ struct ReviewView: View {
     private func star(for index: Int) -> some View {
         ZStack {
             Image(systemName: "star.fill")
-                .foregroundColor(.gray)
+                .foregroundColor(Color(.systemGray3))
                 .opacity(0.8)
 
             if review.rating > Double(index) {
@@ -52,7 +52,7 @@ struct ReviewView: View {
                     .overlay(
                         GeometryReader { geometry in
                             Rectangle()
-                                .fill(Color.gray.opacity(0.8))
+                                .fill(Color(.systemGray3))
                                 .frame(width: geometry.size.width * (1.0 - fillPercentage), height: geometry.size.height)
                                 .offset(x: geometry.size.width * fillPercentage)
                         }

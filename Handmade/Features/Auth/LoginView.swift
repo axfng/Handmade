@@ -15,11 +15,15 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-//            Image("ST-LOGO")
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 100, height: 120)
-//                .padding(.vertical, 32)
+            Text("Welcome Back")
+                .font(.largeTitle).bold()
+                .foregroundStyle(Color(red: 75/255, green: 156/255, blue: 211/255))
+                .padding(10)
+            Text("Enter your credentials to log in")
+                .multilineTextAlignment(.center)
+                .foregroundStyle(Color(.systemGray))
+                .padding(.horizontal, 40)
+                .padding(.bottom, 10)
             
             VStack(spacing: 24) {
                 InputView(text: $email,
@@ -68,9 +72,6 @@ struct LoginView: View {
                 }
                 .font(.system(size: 14))
             }
-//            .navigationDestination(isPresented: $isSignedIn) {
-//                MainTabView(isSignedIn: $isSignedIn)
-//            }
         }
     }
 }
